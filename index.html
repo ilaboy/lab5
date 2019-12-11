@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Live Feeds</title>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--mapbox library-->
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css' rel='stylesheet' />
+		<style>
+			body { margin: 0; padding: 0; }
+			#map { position: absolute; top: 0; bottom: 0; width: 100%; };
+		</style>
+	</head>
+	<body>
+		<style type="text/css">
+			#info {
+			display: block;
+			position: relative;
+			margin: 0px auto;
+			width: 50%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			font-size: 12px;
+			text-align: center;
+			color: #222;
+			background: #fff;
+			}
+		</style>
+		<div id='map'></div>
+		<pre id='info'></div>
+					<script>
+						mapboxgl.accessToken = 'pk.eyJ1IjoiaWRhbGlzbGFib3kiLCJhIjoiY2syd3BhaXFkMDM1MTNicnYzdnl5ZTU1aSJ9.sMf0JfpuixHluriTdYN5ww';
+
+						
+
+						var map = new mapboxgl.Map({
+							container: 'map',
+							style: 'mapbox://styles/idalislaboy/ck40rbiav0r5i1csz5mll1k1y',
+							center: [-50.527539, 22.694077],
+							zoom: 2,
+							minZoom: 2,
+							maxZoom: 6
+							 // Sets bounds as max
+						});
+						// Add zoom and rotation controls to the map.
+						map.addControl(new mapboxgl.NavigationControl());
+
+						map.on('mousemove', function(e) {
+						document.getElementById('info').innerHTML =
+						// e.point is the x, y coordinates of the mousemove event relative
+						// to the top-left corner of the map
+						JSON.stringify(e.point) +
+						'<br />' +
+						// e.lngLat is the longitude, latitude geographical position of the event
+						JSON.stringify(e.lngLat.wrap());
+						});
+
+					</script>
+
+
+							</script>
+					</div>
+				</section>
+				</body>
+		</html>
+</head>
